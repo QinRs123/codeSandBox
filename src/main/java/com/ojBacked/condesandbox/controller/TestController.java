@@ -1,5 +1,6 @@
 package com.ojBacked.condesandbox.controller;
 
+import com.ojBacked.condesandbox.JavaDockerCodeSandBox;
 import com.ojBacked.condesandbox.JavaNativeCodeSandBox;
 import com.ojBacked.condesandbox.model.ExecuteCodeRequest;
 import com.ojBacked.condesandbox.model.ExecuteCodeResponse;
@@ -20,15 +21,17 @@ public class TestController {
     @Autowired
     private JavaNativeCodeSandBox javaNativeCodeSandBox;
 
-//    ExecuteCodeResponse executeCodeResponse = codeSendBoxProxy.executeCode(executeCodeRequest);
+    @Autowired
+    private JavaDockerCodeSandBox javaDockerCodeSandBox;
+
     @PostMapping("/executeCode")
     public ExecuteCodeResponse executeCode(@RequestBody ExecuteCodeRequest executeCodeRequest){
         if (executeCodeRequest == null) {
             throw new RuntimeException("请求参数为空");
         }
-//        JavaNativeCodeSandBox javaNativeCodeSandBox = new JavaNativeCodeSandBox();
         System.out.println(executeCodeRequest);
-        return javaNativeCodeSandBox.executeCode(executeCodeRequest);
+        return javaDockerCodeSandBox.executeCode(executeCodeRequest);
     }
+
 
 }

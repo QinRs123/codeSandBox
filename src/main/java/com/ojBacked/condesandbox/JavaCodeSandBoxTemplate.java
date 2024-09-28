@@ -109,7 +109,7 @@ public abstract class JavaCodeSandBoxTemplate implements CodeSandBox{
         Long maxMemory = 0L;
         for (ExecuteMessage executeMessage : executeMessages) {
             if(executeMessage.getExitValue()==null || executeMessage.getExitValue()!=0 ){
-                response.setStatue(4);
+                response.setStatue(3);
                 outputList.add(executeMessage.getErrorMessage());
             }else{
                 outputList.add(executeMessage.getMessage());
@@ -155,8 +155,10 @@ public abstract class JavaCodeSandBoxTemplate implements CodeSandBox{
         try {
             complieMessage = codeCompile(userCodeFile);
             if(complieMessage.getExitValue()!=0){
-                return getErrorResponse(complieMessage.getErrorMessage());
+
+                return getErrorResponse(complieMessage.getMessage()+"other err is :"+complieMessage.getErrorMessage());
             }
+
         } catch (Exception e) {
             return getErrorResponse(complieMessage.getErrorMessage());
         }

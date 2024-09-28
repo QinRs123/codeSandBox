@@ -1,3 +1,0 @@
-if(executeCodeResponse.getMessage()!=null){
-            
-        }

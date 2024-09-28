@@ -36,13 +36,6 @@ public class ProcessUtil {
                     compileOutputStringBuilder.append(compileOutputLine);
                 }
                 String errorMessage = compileOutputStringBuilder.toString();
-//                String response;
-//                if (errorMessage.contains("at")){
-//                    String[] split = errorMessage.split("at ");
-//                    response= split[0]+", "+split[split.length-1];
-//                }else{
-//                    response=errorMessage;
-//                }
                 executeMessage.setErrorMessage(errorMessage);
                 bufferedReader.close();
             }
